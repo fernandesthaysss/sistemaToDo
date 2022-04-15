@@ -16,69 +16,57 @@ public class Tarefa implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int 	id_tarefa;
+	private int 	idTarefa;
 	
-	private String 	nome_tarefaString;
-	private Instant dt_criacao;
-	private Instant dt_alteracao;
-	private Instant dt_exclusao;
+	private String 	nomeTarefaString;
+	private Instant dtCriacao;
+	private Instant dtAlteracao;
+	private Instant dtExclusao;
 	private String 	descricao;
-	private String 	dev_resp;
+	private String 	devResp;
 	
 	public Tarefa() {
 		
 	}
 
-	public Tarefa(int id_tarefa, String nome_tarefaString, Instant dt_criacao, Instant dt_alteracao, Instant dt_exclusao,
-			String descricao, String dev_resp) {
-		super();
-		this.id_tarefa = id_tarefa;
-		this.nome_tarefaString = nome_tarefaString;
-		this.dt_criacao = dt_criacao;
-		this.dt_alteracao = dt_alteracao;
-		this.dt_exclusao = dt_exclusao;
-		this.descricao = descricao;
-		this.dev_resp = dev_resp;
+	public int getIdTarefa() {
+		return idTarefa;
 	}
 
-	public int getId_tarefa() {
-		return id_tarefa;
+	public void setIdTarefa(int idTarefa) {
+		this.idTarefa = idTarefa;
 	}
 
-	public void setId_tarefa(int id_tarefa) {
-		this.id_tarefa = id_tarefa;
+	public String getNomeTarefaString() {
+		return nomeTarefaString;
 	}
 
-	public String getNome_tarefaString() {
-		return nome_tarefaString;
+	public void setNomeTarefaString(String nomeTarefaString) {
+		this.nomeTarefaString = nomeTarefaString;
 	}
 
-	public void setNome_tarefaString(String nome_tarefaString) {
-		this.nome_tarefaString = nome_tarefaString;
+	public Instant getDtCriacao() {
+		return dtCriacao;
 	}
 
-	public Instant getDt_criacao() {
-		return dt_criacao;
+	public void setDtCriacao(Instant dtCriacao) {
+		this.dtCriacao = dtCriacao;
 	}
 
-	public void setDt_criacao(Instant dt_criacao) {
-		this.dt_criacao = dt_criacao;
+	public Instant getDtAlteracao() {
+		return dtAlteracao;
 	}
 
-	public Instant getDt_alteracao() {
-		return dt_alteracao;
+	public void setDtAlteracao(Instant dtAlteracao) {
+		this.dtAlteracao = dtAlteracao;
 	}
 
-	public void setDt_alteracao(Instant dt_alteracao) {
-		this.dt_alteracao = dt_alteracao;
+	public Instant getDtExclusao() {
+		return dtExclusao;
 	}
 
-	public Instant getDt_exclusao() {
-		return dt_exclusao;
-	}
-
-	public void setDt_exclusao(Instant dt_exclusao) {
-		this.dt_exclusao = dt_exclusao;
+	public void setDtExclusao(Instant dtExclusao) {
+		this.dtExclusao = dtExclusao;
 	}
 
 	public String getDescricao() {
@@ -89,17 +77,33 @@ public class Tarefa implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public String getDev_resp() {
-		return dev_resp;
+	public String getDevResp() {
+		return devResp;
 	}
 
-	public void setDev_resp(String dev_resp) {
-		this.dev_resp = dev_resp;
+	public void setDevResp(String devResp) {
+		this.devResp = devResp;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Tarefa(int idTarefa, String nomeTarefaString, Instant dtCriacao, Instant dtAlteracao, Instant dtExclusao,
+			String descricao, String devResp) {
+		super();
+		this.idTarefa = idTarefa;
+		this.nomeTarefaString = nomeTarefaString;
+		this.dtCriacao = dtCriacao;
+		this.dtAlteracao = dtAlteracao;
+		this.dtExclusao = dtExclusao;
+		this.descricao = descricao;
+		this.devResp = devResp;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(descricao, dev_resp, dt_alteracao, dt_criacao, dt_exclusao, id_tarefa, nome_tarefaString);
+		return Objects.hash(descricao, devResp, dtAlteracao, dtCriacao, dtExclusao, idTarefa, nomeTarefaString);
 	}
 
 	@Override
@@ -111,16 +115,11 @@ public class Tarefa implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Tarefa other = (Tarefa) obj;
-		return Objects.equals(descricao, other.descricao) && Objects.equals(dev_resp, other.dev_resp)
-				&& Objects.equals(dt_alteracao, other.dt_alteracao) && Objects.equals(dt_criacao, other.dt_criacao)
-				&& Objects.equals(dt_exclusao, other.dt_exclusao) && id_tarefa == other.id_tarefa
-				&& Objects.equals(nome_tarefaString, other.nome_tarefaString);
+		return Objects.equals(descricao, other.descricao) && Objects.equals(devResp, other.devResp)
+				&& Objects.equals(dtAlteracao, other.dtAlteracao) && Objects.equals(dtCriacao, other.dtCriacao)
+				&& Objects.equals(dtExclusao, other.dtExclusao) && idTarefa == other.idTarefa
+				&& Objects.equals(nomeTarefaString, other.nomeTarefaString);
 	}
 	
 	
-	
-	
-	
-	
-
 }
