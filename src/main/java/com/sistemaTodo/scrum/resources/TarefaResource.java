@@ -1,12 +1,16 @@
 package com.sistemaTodo.scrum.resources;
 
-import java.time.Instant;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sistemaTodo.scrum.services.TarefaService;
 import com.sistemaTodo.srum.entities.Tarefa;
 
 
@@ -14,13 +18,21 @@ import com.sistemaTodo.srum.entities.Tarefa;
 @RestController
 public class TarefaResource {
 	
+	@Autowired
+	private TarefaService service;
+	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<Tarefa> findAll() {
+	public ResponseEntity<List<Tarefa>> findAll() {
+		List<Tarefa> list = service.findAll();
 		
-		Tarefa t = new Tarefa(1,"WLAO-3914-VALIDAR ARQUIVO DE ENTRADA CADOC",Instant.parse("2019-06-20T19:53:07Z"),Instant.parse("2019-06-20T19:53:07Z"),Instant.parse("2022-06-20T19:53:07Z"),"Manter os arquivos validados de acordo com a especificação","Thays");
-		return ResponseEntity.ok().body(t);
+		return ResponseEntity.ok().body(list);
 		
 	}
-
+	
+	@GetMapping(value = "/{idTarefa}")
+	public ResponseEntity<Tarefa> findById(@PathVariable int idTarefa){
+	Tarefa obj = service.findById(idTarefa);	
+	return ResponseEntity.ok().body(obj);
+	}
 
 }
