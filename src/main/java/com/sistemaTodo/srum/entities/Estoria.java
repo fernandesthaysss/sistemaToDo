@@ -24,6 +24,7 @@ public class Estoria implements Serializable {
 	private Instant dtExclusao;
 	private String 	descricao;
 	
+
 	public Estoria() {
 		
 	}
@@ -77,9 +78,13 @@ public class Estoria implements Serializable {
 		this.descricao = descricao;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(descricao, dtAlteracao, dtCriacao, dtExclusao, idEstoria);
+		return Objects.hash(idEstoria);
 	}
 
 	@Override
@@ -91,18 +96,7 @@ public class Estoria implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Estoria other = (Estoria) obj;
-		return Objects.equals(descricao, other.descricao) && Objects.equals(dtAlteracao, other.dtAlteracao)
-				&& Objects.equals(dtCriacao, other.dtCriacao) && Objects.equals(dtExclusao, other.dtExclusao)
-				&& idEstoria == other.idEstoria;
+		return idEstoria == other.idEstoria;
 	}
-	
-	
-	
-	
-	
-	
-	
-}
 
-
-
+}	

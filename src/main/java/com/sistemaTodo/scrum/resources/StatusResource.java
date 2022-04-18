@@ -10,28 +10,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sistemaTodo.scrum.services.GestorService;
-import com.sistemaTodo.srum.entities.Gestor;
+import com.sistemaTodo.scrum.services.StatusService;
+import com.sistemaTodo.srum.entities.Status;
 
-@RequestMapping(value = "/gestor")
+@RequestMapping(value = "/status")
 @RestController
-public class GestorResource {
+public class StatusResource {
 	
 	@Autowired
-	private GestorService service;
+	private StatusService service;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Gestor>> findAll() {
-		List<Gestor> list = service.findAll();
+	public ResponseEntity<List<Status>> findAll() {
+		List<Status> list = service.findAll();
+		
 		
 		return ResponseEntity.ok().body(list);
-
+		
 	}
 	
-	@GetMapping(value = "/{idGestor}")
-	public ResponseEntity<Gestor> findById(@PathVariable String idGestor){
-	Gestor obj = service.findById(idGestor);	
+	@GetMapping(value = "/{idStatus}")
+	public ResponseEntity<Status> findById(@PathVariable int idStatus){
+	Status obj = service.findById(idStatus);	
 	return ResponseEntity.ok().body(obj);
+	
 	}
 
 }

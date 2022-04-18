@@ -3,10 +3,12 @@ package com.sistemaTodo.srum.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Funcionario implements Serializable {
@@ -14,17 +16,19 @@ public class Funcionario implements Serializable {
 	private static final long serialVersionUID = -1857259952179381130L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	@Column(name = "ID_FUNCIONARIO")
 	private String emailIdFunc;
 
 	private int senha;
 	private String cargo;
 	private String gestorResp;
-
+	
 	public Funcionario() {
 
 	}
-	
+
 	public Funcionario(String emailIdFunc, int senha, String cargo, String gestorResp) {
 		super();
 		this.emailIdFunc = emailIdFunc;
@@ -67,7 +71,7 @@ public class Funcionario implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cargo, emailIdFunc, gestorResp, senha);
+		return Objects.hash(emailIdFunc);
 	}
 
 	@Override
@@ -79,8 +83,8 @@ public class Funcionario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Funcionario other = (Funcionario) obj;
-		return Objects.equals(cargo, other.cargo) && emailIdFunc == other.emailIdFunc
-				&& Objects.equals(gestorResp, other.gestorResp) && senha == other.senha;
+		return Objects.equals(emailIdFunc, other.emailIdFunc);
 	}
-
+	
+	
 }

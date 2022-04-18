@@ -23,7 +23,4 @@ public class TarefaService {
 		Optional <Tarefa> obj = repository.findById(idTarefa);
 		return obj.get();
 	}
-	
-	
-
 }
